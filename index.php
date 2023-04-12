@@ -38,12 +38,12 @@ if (!$_SESSION["login"] || ($_SESSION['privilege'] == 'admin'))
 		<div class="new-app-form">
 			<form action="">
 				<input type="hidden" name="name" value="<?php echo($_SESSION['user']) ?>">
-				<select name="doctor" id="">
+				<select name="doctor" id="new-apt-select">
 					<option value="none">Doktor secin</option>
 					<option value="">Doktor1</option>
 				</select>
-				<label for="date">Tarih secin</label>
-				<input type="date" name="date" id="date">
+				<input type="date" name="date" id="new-apt-date">
+				<button id="btn_appt">Randevu olustur</button>
 			</form>
 		</div>
 	</div>

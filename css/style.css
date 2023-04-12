@@ -147,6 +147,25 @@ td {
 	text-align: center;
 }
 
+#new-apt-select {
+	width: 30%;
+	margin-bottom: 2%;
+	margin-left: 35%;
+	display: block;
+
+}
+
+#btn_appt{
+	width: 30%;
+	margin-left: 35%;
+	padding: 10px;
+}
+
+#new-apt-date {
+	width: 30%;
+	margin-left: 35%;
+	margin-bottom: 5%;
+}
 
 /* DOKTOR EKLEME */
 
