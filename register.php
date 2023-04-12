@@ -26,7 +26,7 @@ if ($_POST && isset($_POST["name"]) && isset($_POST["tc"]) && isset($_POST["pass
 <body>
 
 	<center>
-		<h3>HASTANE RANDEVU SISTEMI</h3>
+		<h3 class="login-header">HASTANE RANDEVU SISTEMI</h3>
 	</center>
 
 	<div class='login-form'>

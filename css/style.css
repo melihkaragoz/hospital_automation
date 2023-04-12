@@ -4,7 +4,7 @@
 	padding: 0;
 }
 
-center h3 {
+center .login-header {
 	margin-top: 5%;
 }
 
@@ -74,8 +74,77 @@ center h3 {
 
 .head {
 	width: 100%;
-	height: 10vh;
+	height: 15vh;
 	background-color: blanchedalmond;
+}
+
+.head .header {
+	padding-top: 25px;
+}
+
+.index-main {
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 20%;
+	border: 2px solid green;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.index-new-app {
+	display: none;
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 10%;
+	border: 2px solid blue;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.index-main .app_btn {
+	width: 45%;
+	height: 10vh;
+	padding: 5px;
+	border-radius: 7px;
+}
+
+.index-main .app_new {
+	background-color: green;
+	margin-right: 9%;
+}
+
+.index-main .app_old {
+	background-color: orange;
+}
+
+
+.exit {
+	position: fixed;
+	right: 5%;
+	top: 5%;
+}
+
+/* DOKTOR PANELI */
+
+.table-main {
+	width: 80%;
+	margin-top: 10%;
+	margin-left: 20%;
+}
+
+.table-main th {
+	width: 27%;
+}
+
+.table-main th {
+	color: rgb(129, 129, 249);
+}
+
+.table-main table,
+th,
+td {
+	border: 1px solid rgb(36, 28, 28);
+	text-align: center;
 }
 
 
@@ -88,7 +157,7 @@ center h3 {
 	margin-bottom: 5%;
 }
 
-.return-admin-panel{
+.return-admin-panel {
 	width: 40%;
 	margin-left: 37%;
 	margin-bottom: 5%;

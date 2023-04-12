@@ -13,6 +13,14 @@ function check_user_exist($username, $tc, $password)
 	return ($data['n']);
 }
 
+function get_name($tc, $password)
+{
+	global $con;
+	$query = mysqli_query($con, "SELECT name as n FROM users WHERE tc = '$tc' AND password = '$password'");
+	$data = mysqli_fetch_array($query);
+	return ($data['n']);
+}
+
 function check_doctor_exist($username, $branch)
 {
 	global $con;
@@ -21,11 +29,11 @@ function check_doctor_exist($username, $branch)
 	return ($data['n']);
 }
 
-function check_is_admin($password)
+function check_is_doctor($username, $password)
 {
 	global $con;
-	if ($password) {
-		$query = mysqli_query($con, "SELECT COUNT(*) as n FROM users WHERE password = '$password' AND name = 'admin'");
+	if ($username && $password) {
+		$query = mysqli_query($con, "SELECT COUNT(*) as n FROM doctors WHERE password = '$password' AND name = '$username'");
 		$data = mysqli_fetch_array($query);
 		return ($data['n']);
 	}
@@ -45,5 +53,13 @@ function add_doctor($username, $password, $branch)
 	global $con;
 	$query = mysqli_query($con, "INSERT INTO doctors (name, password, branch, available) VALUES('$username', '$password', '$branch', '1')");
 	header('Location: admin.php?add_dr=ok');
+	return ($con->errno);
+}
+
+function new_appointment($patient, $branch, $doctor, $date)
+{
+	global $con;
+	$query = mysqli_query($con, "INSERT INTO appointments (patient_name, doctor_name, branch, date) VALUES('$patient', '$doctor', '$branch', '$date')");
+	header('Location: index.php?add_ap=ok');
 	return ($con->errno);
 }
