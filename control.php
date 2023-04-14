@@ -56,10 +56,39 @@ function add_doctor($username, $password, $branch)
 	return ($con->errno);
 }
 
-function new_appointment($patient, $branch, $doctor, $date)
+function new_appointment($patient, $doctor, $branch, $date)
 {
 	global $con;
 	$query = mysqli_query($con, "INSERT INTO appointments (patient_name, doctor_name, branch, date) VALUES('$patient', '$doctor', '$branch', '$date')");
 	header('Location: index.php?add_ap=ok');
 	return ($con->errno);
+}
+
+function delete_app($id)
+{
+	global $con;
+	$count = mysqli_query($con, "DELETE from appointments WHERE id='$id'");
+}
+
+function get_my_appointments($patient)
+{
+	global $con;
+	$count = mysqli_query($con, "SELECT COUNT(*) as c from appointments WHERE patient_name='$patient'");
+	$cnt = mysqli_fetch_array($count);
+	$_SESSION['app_count'] = $cnt['c'];
+	$query = mysqli_query($con, "SELECT id,doctor_name,branch,date from appointments WHERE patient_name='$patient'");
+	$_SESSION['appointments_arr'] = $query;
+}
+
+function get_doctors()
+{
+	global $con;
+	$query = mysqli_query($con, "SELECT name,branch FROM doctors");
+	$_SESSION['doctors_arr'] = $query;
+	return (0);
+}
+
+function alert($msg)
+{
+	echo ("<script>alert('$msg')</script>");
 }

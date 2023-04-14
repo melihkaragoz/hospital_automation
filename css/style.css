@@ -167,6 +167,48 @@ td {
 	margin-bottom: 5%;
 }
 
+.index-my-apps{
+	display: none;
+	width: 60%;
+	margin-top: 10%;
+	margin-left: 20%;
+}
+
+.index-my-apps th,td{
+	width: 20%;
+}
+
+.index-my-apps th  {
+	color: rgb(129, 129, 249);
+	text-align: center;
+}
+
+.no_app{
+	width: 40%;
+	margin-left: 30%;
+}
+
+.back{
+	display: none;
+	position: fixed;
+	top: 20%;
+	left: 5%;
+}
+
+.back button{
+	padding: 6px;
+	border-radius: 7px;
+}
+
+.cancel_app_btn{
+	color: red;
+	background-color: transparent;
+	padding: 3px;
+	border: 1px solid red;
+	border-radius: 30px;
+	cursor: pointer;
+}
+
 /* DOKTOR EKLEME */
 
 .reg-branch {

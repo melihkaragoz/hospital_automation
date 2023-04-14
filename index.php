@@ -4,6 +4,21 @@ if (!isset($_SESSION))
 if (!$_SESSION["login"] || ($_SESSION['privilege'] == 'admin'))
 	header('Location: login.php');
 
+require 'control.php';
+get_doctors();
+
+if (isset($_GET)) {
+	if (isset($_GET['new_appt'])) {
+		if (isset($_GET['doctor']) && isset($_GET['date'])) {
+			if ($_GET['doctor'] != "none" && $_GET['date'] != '')
+				new_appointment($_GET['name'], explode("-", $_GET['doctor'])[0], explode("-", $_GET['doctor'])[1], $_GET['date']);
+			else alert("lütfen bilgileri eksiksiz doldurduğunuzdan emin olun.");
+		} else alert("lütfen bilgileri eksiksiz doldurduğunuzdan emin olun.");
+	} else if (isset($_GET['add_ap']) && $_GET['add_ap'] == 'ok') {
+		alert("Randevunuz başarıyla oluşturuldu");
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -31,21 +46,59 @@ if (!$_SESSION["login"] || ($_SESSION['privilege'] == 'admin'))
 
 	<div class="index-main">
 		<button onclick="new_appointment('<?php echo ($_SESSION['user']) ?>')" class="app_btn app_new">RANDEVU AL</button>
-		<button class="app_btn app_old">RANDEVULARIM</button>
+		<button onclick="get_appointments('<?php get_my_appointments($_SESSION['user']);
+											echo ($_SESSION['user']) ?>')" class="app_btn app_old">RANDEVULARIM</button>
 	</div>
 
 	<div class="index-new-app">
 		<div class="new-app-form">
-			<form action="">
-				<input type="hidden" name="name" value="<?php echo($_SESSION['user']) ?>">
+			<form method="GET">
+				<input type="hidden" name="name" value="<?php echo ($_SESSION['user']) ?>">
 				<select name="doctor" id="new-apt-select">
-					<option value="none">Doktor secin</option>
-					<option value="">Doktor1</option>
+					<option value='none'>Doktor secin</option>
+					<?php
+					while ($user = $_SESSION['doctors_arr']->fetch_assoc()) {
+						$dr_name = $user["name"];
+						$dr_branch = $user["branch"];
+						echo ("<option value='$dr_name-$dr_branch'>$dr_name - $dr_branch</option>");
+					}
+					?>
 				</select>
 				<input type="date" name="date" id="new-apt-date">
-				<button id="btn_appt">Randevu olustur</button>
+				<button name="new_appt" value="1" id="btn_appt">Randevu olustur</button>
 			</form>
 		</div>
+	</div>
+
+	<div class="index-my-apps">
+		<?php
+		if (isset($_SESSION['app_count']) && $_SESSION['app_count'] != 0) {
+			echo ("<table>");
+			echo ("<tr>");
+			echo ("<th>Poliklinik</th>");
+			echo ("<th>Doktor</th>");
+			echo ("<th>Randevu Tarih/Saati</th>");
+			echo ("</tr>");
+			while ($app = $_SESSION['appointments_arr']->fetch_assoc()) {
+				$app_branch = $app["doctor_name"];
+				$app_doctor = $app["branch"];
+				$app_date = $app["date"];
+				$app_id = $app["id"];
+				echo ("<tr>");
+				echo ("<td>$app_branch</td>");
+				echo ("<td>$app_doctor</td>");
+				echo ("<td>$app_date</td>");
+				echo ("</tr>");
+			}
+		} else {
+			echo ("<h3 class='no_app'>HENÜZ HİÇ RANDEVUNUZ YOK.</h3></i>");
+		}
+		?>
+		</table>
+	</div>
+
+	<div class="back">
+		<button onclick="go_back();"><i class="fa-solid fa-chevron-down"></i>GERİ DÖN</button>
 	</div>
 
 	<div class="exit">
