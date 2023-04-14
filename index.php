@@ -78,6 +78,7 @@ if (isset($_GET)) {
 			echo ("<th>Poliklinik</th>");
 			echo ("<th>Doktor</th>");
 			echo ("<th>Randevu Tarih/Saati</th>");
+			echo ("<th class='no_border'></th>");
 			echo ("</tr>");
 			while ($app = $_SESSION['appointments_arr']->fetch_assoc()) {
 				$app_branch = $app["doctor_name"];

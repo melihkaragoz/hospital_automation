@@ -80,6 +80,16 @@ function get_my_appointments($patient)
 	$_SESSION['appointments_arr'] = $query;
 }
 
+function get_my_appointments_as_doctor($doctor)
+{
+	global $con;
+	$count = mysqli_query($con, "SELECT COUNT(*) as c from appointments WHERE doctor_name='$doctor'");
+	$cnt = mysqli_fetch_array($count);
+	$_SESSION['dr_app_count'] = $cnt['c'];
+	$query = mysqli_query($con, "SELECT id,patient_name,branch,date from appointments WHERE doctor_name='$doctor'");
+	$_SESSION['dr_appointments_arr'] = $query;
+}
+
 function get_doctors()
 {
 	global $con;

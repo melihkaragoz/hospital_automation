@@ -4,6 +4,7 @@ if (!isset($_SESSION))
 	session_start();
 if ($_SESSION['privilege'] != 'doctor')
 	header('Location:login.php');
+get_my_appointments_as_doctor($_SESSION['user']);
 ?>
 
 <!DOCTYPE html>
@@ -24,35 +25,29 @@ if ($_SESSION['privilege'] != 'doctor')
 	</center>
 	<div class="table-main">
 		<div class="table-content">
-			<table>
-				<tr>
-					<th>Hasta Adı</th>
-					<th>Poliklinik</th>
-					<th>Doktor</th>
-					<th>Randevu Tarih/Saati</th>
-				</tr>
-				<tr>
-					<td>Melih Karagöz</td>
-					<td>Nöroloji</td>
-					<td>Merve Gördağ</td>
-					<td>20/04/2023 16:30</td>
-				</tr>
-				<tr>
-					<td>Melih Karagöz</td>
-					<td>Nöroloji</td>
-					<td>Merve Gördağ</td>
-					<td>20/04/2023 16:30</td>
-				</tr>				<tr>
-					<td>Melih Karagöz</td>
-					<td>Nöroloji</td>
-					<td>Merve Gördağ</td>
-					<td>20/04/2023 16:30</td>
-				</tr>				<tr>
-					<td>Melih Karagöz</td>
-					<td>Nöroloji</td>
-					<td>Merve Gördağ</td>
-					<td>20/04/2023 16:30</td>
-				</tr>
+			<?php
+			if (isset($_SESSION['dr_app_count']) && $_SESSION['dr_app_count'] != 0) {
+				echo ("<table class='dr_table'>");
+				echo ("<tr>");
+				echo ("<th>Hasta Adı</th>");
+				echo ("<th>Poliklinik</th>");
+				echo ("<th>Randevu Tarih/Saati</th>");
+				echo ("</tr>");
+				while ($app = $_SESSION['dr_appointments_arr']->fetch_assoc()) {
+					$app_branch = $app["patient_name"];
+					$app_patient = $app["branch"];
+					$app_date = $app["date"];
+					$app_id = $app["id"];
+					echo ("<tr>");
+					echo ("<td>$app_branch</td>");
+					echo ("<td>$app_patient</td>");
+					echo ("<td>$app_date</td>");
+					echo ("</tr>");
+				}
+			} else {
+				echo ("<h3 class='no_app'>HENÜZ HİÇ RANDEVUNUZ YOK.</h3></i>");
+			}
+			?>
 			</table>
 		</div>
 	</div>

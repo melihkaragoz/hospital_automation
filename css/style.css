@@ -209,6 +209,10 @@ td {
 	cursor: pointer;
 }
 
+.dr_table{
+	margin: 10%;
+}
+
 /* DOKTOR EKLEME */
 
 .reg-branch {
