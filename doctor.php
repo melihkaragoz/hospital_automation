@@ -15,14 +15,19 @@ get_my_appointments_as_doctor($_SESSION['user']);
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/index.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<title>Doktor Paneli</title>
 </head>
 
 <body>
-	<center>
-		<h2>DOKTOR PANELINE HOSGELDINIZ</h2>
-	</center>
+	<div class="head">
+		<div class="header">
+			<center>
+				<h3 class="index-header">DOKTOR ARAYUZUNE HOSGELDINIZ</h3><br>
+				<p>Sn. <?php echo ($_SESSION['user']) ?></p>
+			</center>
+		</div>
+	</div>
 	<div class="table-main">
 		<div class="table-content">
 			<?php
@@ -42,6 +47,7 @@ get_my_appointments_as_doctor($_SESSION['user']);
 					echo ("<td>$app_branch</td>");
 					echo ("<td>$app_patient</td>");
 					echo ("<td>$app_date</td>");
+					echo ("<td onclick='del($app_id)' class='cancel_app'>iptal et<input type='hidden' class='app_id_" . $app_id . "' value='$app_id'> </td>");
 					echo ("</tr>");
 				}
 			} else {
@@ -51,6 +57,19 @@ get_my_appointments_as_doctor($_SESSION['user']);
 			</table>
 		</div>
 	</div>
+
+	<div class="exit">
+		<a href="login.php?pr=exit">Çıkış yap</a>
+	</div>
+
+	<script>
+		function del(id) {
+			$.get("control.php?del_app="+id, function(data, status) {
+				alert("Randevu başarıyla iptal edildi.");
+				window.location.href = "doctor.php";
+			});
+		}
+	</script>
 </body>
 
 </html>

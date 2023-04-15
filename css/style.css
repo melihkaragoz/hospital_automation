@@ -109,7 +109,7 @@ center .login-header {
 }
 
 .index-main .app_new {
-	background-color: green;
+	background-color: #1AA7EC;
 	margin-right: 9%;
 }
 
@@ -123,6 +123,7 @@ center .login-header {
 	right: 5%;
 	top: 5%;
 }
+
 
 /* DOKTOR PANELI */
 
@@ -155,7 +156,7 @@ td {
 
 }
 
-#btn_appt{
+#btn_appt {
 	width: 30%;
 	margin-left: 35%;
 	padding: 10px;
@@ -167,40 +168,41 @@ td {
 	margin-bottom: 5%;
 }
 
-.index-my-apps{
+.index-my-apps {
 	display: none;
 	width: 60%;
 	margin-top: 10%;
 	margin-left: 20%;
 }
 
-.index-my-apps th,td{
+.index-my-apps th,
+td {
 	width: 20%;
 }
 
-.index-my-apps th  {
+.index-my-apps th {
 	color: rgb(129, 129, 249);
 	text-align: center;
 }
 
-.no_app{
+.no_app {
 	width: 40%;
 	margin-left: 30%;
 }
 
-.back{
+.back {
 	display: none;
 	position: fixed;
 	top: 20%;
 	left: 5%;
 }
 
-.back button{
+.back button {
 	padding: 6px;
 	border-radius: 7px;
 }
 
-.cancel_app_btn{
+.cancel_app_btn {
 	color: red;
 	background-color: transparent;
 	padding: 3px;
@@ -209,7 +211,7 @@ td {
 	cursor: pointer;
 }
 
-.dr_table{
+.dr_table {
 	margin: 10%;
 }
 

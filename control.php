@@ -68,6 +68,7 @@ function delete_app($id)
 {
 	global $con;
 	$count = mysqli_query($con, "DELETE from appointments WHERE id='$id'");
+	echo ("appointment deleted successfully. id=$id");
 }
 
 function get_my_appointments($patient)
@@ -101,4 +102,8 @@ function get_doctors()
 function alert($msg)
 {
 	echo ("<script>alert('$msg')</script>");
+}
+
+if (isset($_GET) && isset($_GET['del_app'])) {
+	delete_app(($_GET['del_app']));
 }

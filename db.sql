@@ -29,7 +29,7 @@ CREATE TABLE `appointments` (
   `date` varchar(20) DEFAULT NULL,
   `branch` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `appointments` (
 
 LOCK TABLES `appointments` WRITE;
 /*!40000 ALTER TABLE `appointments` DISABLE KEYS */;
-INSERT INTO `appointments` VALUES (10,'admin','Melih Karagöz','2023-04-10','Nöroloji'),(11,'admin','Merve Gördağ','2023-04-16','Sinir Hastalıkları');
+INSERT INTO `appointments` VALUES (14,'Melih Karagöz','Merve Gördağ','2023-03-28','Sinir Hastalıkları');
 /*!40000 ALTER TABLE `appointments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,4 +104,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-15  2:34:45
+-- Dump completed on 2023-04-15 19:35:28

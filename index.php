@@ -30,6 +30,7 @@ if (isset($_GET)) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/index.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<title>Anasayfa</title>
 </head>
 
@@ -89,22 +90,33 @@ if (isset($_GET)) {
 				echo ("<td>$app_branch</td>");
 				echo ("<td>$app_doctor</td>");
 				echo ("<td>$app_date</td>");
+				echo ("<td onclick='del($app_id)' class='cancel_app'>iptal et<input type='hidden'> </td>");
 				echo ("</tr>");
 			}
 		} else {
 			echo ("<h3 class='no_app'>HENÜZ HİÇ RANDEVUNUZ YOK.</h3></i>");
 		}
 		?>
+
 		</table>
 	</div>
 
 	<div class="back">
-		<button onclick="go_back();"><i class="fa-solid fa-chevron-down"></i>GERİ DÖN</button>
+		<button onclick="go_back()"><-- GERİ DÖN</button>
 	</div>
 
 	<div class="exit">
 		<a href="login.php?pr=exit">Çıkış yap</a>
 	</div>
+
+	<script>
+		function del(id) {
+			$.get("control.php?del_app=" + id, function(data, status) {
+				alert("Randevu başarıyla iptal edildi.");
+				window.location.href = "index.php";
+			});
+		}
+	</script>
 </body>
 
 </html>

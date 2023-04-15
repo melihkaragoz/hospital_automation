@@ -32,13 +32,12 @@ if (isset($_GET) && isset($_GET['reg']) && $_GET['reg'] == 'ok')
 else if (isset($_GET) && isset($_GET['as']))
 	if ($_GET['as'] == 'doctor')
 		$as = 'doctor';
-else if (isset($_GET) && isset($_GET['pr']))
-	if ($_GET['pr'] == 'exit')
-	{
-		$_SESSION['user'] = 'NULL';
-		$_SESSION['login'] = 0;
-		$_SESSION['privilege'] = '';
-	}
+	else if (isset($_GET) && isset($_GET['pr']))
+		if ($_GET['pr'] == 'exit') {
+			$_SESSION['user'] = 'NULL';
+			$_SESSION['login'] = 0;
+			$_SESSION['privilege'] = '';
+		}
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +49,7 @@ else if (isset($_GET) && isset($_GET['pr']))
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/index.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<title>Giris Yap</title>
 </head>
 
@@ -66,7 +66,7 @@ else if (isset($_GET) && isset($_GET['pr']))
 			else
 				echo ("<input type='text' name='username' class='login-item login-tc' placeholder='Ad, Soyad'>");
 			?>
-			<input type="password" name="password" class="login-item login-passwd" placeholder="Şifre">
+			<input id='deneme' type="password" name="password" class="login-item login-passwd" placeholder="Şifre">
 			<p class="forgot-pass">sifremi unuttum</p>
 			<button name='<?php echo ($as) ?>' class="login-btn">Giriş Yap</button>
 		</form>
