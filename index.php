@@ -61,7 +61,8 @@ if (isset($_GET)) {
 					while ($user = $_SESSION['doctors_arr']->fetch_assoc()) {
 						$dr_name = $user["name"];
 						$dr_branch = $user["branch"];
-						echo ("<option value='$dr_name-$dr_branch'>$dr_name - $dr_branch</option>");
+						if($dr_name != 'admin')
+							echo ("<option value='$dr_name-$dr_branch'>$dr_name - $dr_branch</option>");
 					}
 					?>
 				</select>
@@ -100,7 +101,7 @@ if (isset($_GET)) {
 
 		</table>
 	</div>
-
+<script>,)</script>  <!-- js hata verdigi icin koyuldu, bir anlami yok -->
 	<div class="back">
 		<button onclick="go_back()"><-- GERİ DÖN</button>
 	</div>

@@ -1,9 +1,10 @@
 <?php
 include 'connect.php';
 include 'control.php';
-$_SESSION['login'] = 0;
-if ($_SESSION['privilege'] != 'admin')
-	header('Location: login.php');
+if (!isset($_SESSION))
+	session_start();
+// if ($_SESSION['privilege'] != 'admin')
+// 	header('Location: login.php');
 $con = $_SESSION['con'];
 if ($_POST) {
 	if (isset($_POST["name"]) && isset($_POST["tc"]) && isset($_POST["password"])) {
@@ -19,6 +20,11 @@ if ($_POST) {
 	} else
 		echo ("<script>alert('[HATA] lutfen tum alanlari eksiksiz doldurun')</script>");
 }
+if ($_GET) {
+	if (isset($_GET['add_dr']) && $_GET['add_dr'] == 'ok')
+		alert("Doktor başarıyla eklendi.");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -51,11 +57,12 @@ if ($_POST) {
 				<option value="Ortopedi">Ortopedi</option>
 				<option value="Cildiye">Cildiye</option>
 				<option value="Sinir Hastalıkları">Sinir hastalıkları</option>
+				<option value="Admin">Admin</option>
 				<option value="Diğer">Diğer</option>
 			</select>
 			<input type="password" name="password" class="login-item login-passwd" placeholder='Şifre'>
 			<button class="login-btn register-btn" name="register">Doktor Ekle</button><br><br>
-			<a class="return-admin-panel" href="admin.php">Admin paneline dön</a>
+			<a class="return-admin-panel" href="admin.php">Randevuları Görüntüle</a>
 		</form>
 	</div>
 </body>

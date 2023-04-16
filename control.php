@@ -52,7 +52,7 @@ function add_doctor($username, $password, $branch)
 {
 	global $con;
 	$query = mysqli_query($con, "INSERT INTO doctors (name, password, branch, available) VALUES('$username', '$password', '$branch', '1')");
-	header('Location: admin.php?add_dr=ok');
+	header('Location: add_doctor.php?add_dr=ok');
 	return ($con->errno);
 }
 
@@ -88,6 +88,16 @@ function get_my_appointments_as_doctor($doctor)
 	$cnt = mysqli_fetch_array($count);
 	$_SESSION['dr_app_count'] = $cnt['c'];
 	$query = mysqli_query($con, "SELECT id,patient_name,branch,date from appointments WHERE doctor_name='$doctor'");
+	$_SESSION['dr_appointments_arr'] = $query;
+}
+
+function get_my_appointments_as_admin()
+{
+	global $con;
+	$count = mysqli_query($con, "SELECT COUNT(*) as c from appointments");
+	$cnt = mysqli_fetch_array($count);
+	$_SESSION['dr_app_count'] = $cnt['c'];
+	$query = mysqli_query($con, "SELECT id,patient_name,doctor_name,branch,date from appointments");
 	$_SESSION['dr_appointments_arr'] = $query;
 }
 

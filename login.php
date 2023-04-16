@@ -10,14 +10,20 @@ if (isset($_POST)) {
 	if (isset($_POST['doctor']) && isset($_POST['password']) && isset($_POST['username'])) {
 		if (check_is_doctor($_POST['username'], $_POST['password'])) {
 			$_SESSION['login'] = 1;
-			$_SESSION['privilege'] = 'doctor';
 			$_SESSION['user'] = $_POST['username'];
-			header('Location:doctor.php');
+			if ($_POST['username'] == 'admin') {
+				$_SESSION['privilege'] = 'admin';
+				header('Location:add_doctor.php');
+			} else {
+				$_SESSION['privilege'] = 'doctor';
+				header('Location:doctor.php');
+			}
 		} else
 			echo ("<script>alert('[HATA] sifre yanlis')</script>");
 	} else if (isset($_POST['tc']) && isset($_POST['password'])) {
 		if (check_user_exist("", $_POST['tc'], $_POST['password'])) {
 			$_SESSION['login'] = 1;
+			$_SESSION['privilege'] = 'user';
 			$_SESSION['user'] = get_name($_POST['tc'], $_POST['password']);
 			header('Location:index.php');
 		} else {
@@ -29,7 +35,7 @@ if (isset($_POST)) {
 }
 if (isset($_GET) && isset($_GET['reg']) && $_GET['reg'] == 'ok')
 	echo ("<script>alert('[OK] kullanici basariyla kaydedildi.')</script>");
-else if (isset($_GET) && isset($_GET['as']))
+else if (isset($_GET) && isset($_GET['as'])) {
 	if ($_GET['as'] == 'doctor')
 		$as = 'doctor';
 	else if (isset($_GET) && isset($_GET['pr']))
@@ -38,6 +44,7 @@ else if (isset($_GET) && isset($_GET['as']))
 			$_SESSION['login'] = 0;
 			$_SESSION['privilege'] = '';
 		}
+}
 ?>
 
 <!DOCTYPE html>
@@ -67,12 +74,13 @@ else if (isset($_GET) && isset($_GET['as']))
 				echo ("<input type='text' name='username' class='login-item login-tc' placeholder='Ad, Soyad'>");
 			?>
 			<input id='deneme' type="password" name="password" class="login-item login-passwd" placeholder="Şifre">
-			<p class="forgot-pass">sifremi unuttum</p>
+			<br><br>
 			<button name='<?php echo ($as) ?>' class="login-btn">Giriş Yap</button>
 		</form>
 		<?php
 		if ($as == 'doctor')
-			echo ("<br><a class='as-admin' href='login.php?as=user'>hasta girisi</a>");
+			echo ("<br><a class='as-admin' style='margin-left:45%' href='login.php?as=user'>hasta girisi</a>
+			<br><br><p style='margin-left:23%'>*Doktor kaydı yapmak istiyorsanız, admin olarak giriş yapın</p>");
 		else
 			echo ("<form action='./register.php' method='post'>
 			<button name='register' class='login-btn register-btn'>Kayıt Ol</button>

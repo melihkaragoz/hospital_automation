@@ -4,17 +4,29 @@
 	padding: 0;
 }
 
+body{
+	background-image: url("../assets/bg.jpeg");
+}
+
+input{
+	opacity: 0.6;
+}
+
+button{
+	opacity: 0.6;
+}
+
 center .login-header {
 	margin-top: 5%;
 }
 
 .login-form {
-	margin-top: 10%;
+	margin-top: 5%;
 	padding: 10px;
 	padding-bottom: 5%;
-	width: 40%;
-	margin-left: 30%;
-	border: 1px solid gray;
+	width: 60%;
+	margin-left: 20%;
+	/* border: 1px solid gray; */
 	border-radius: 7px;
 }
 
@@ -50,24 +62,29 @@ center .login-header {
 	padding: 3px;
 }
 
+.login-form .login-btn:hover{
+	background-color: gray;
+	color:white;
+	opacity: 1;
+}
+
 .login-form .register-btn {
 	margin-top: 3%;
 	margin-bottom: 1%;
 	border: 3px solid rgb(129, 129, 249);
 	border-bottom: 3px solid rgb(129, 129, 249);
-	background-color: none;
 }
 
 .login-form .register-btn:hover {
-	background-color: rgb(129, 129, 249);
 	border-bottom: 2px solid rgb(129, 129, 249);
 	border-top: 4px solid rgb(129, 129, 249);
 	color: white;
+	background-color: rgb(129, 129, 249);
 }
 
 .login-form .as-admin {
 	width: 40%;
-	margin-left: 35%;
+	margin-left: 40%;
 }
 
 /* ANASAYFA */
@@ -75,7 +92,7 @@ center .login-header {
 .head {
 	width: 100%;
 	height: 15vh;
-	background-color: blanchedalmond;
+	border-bottom: 1px solid black;
 }
 
 .head .header {
@@ -86,7 +103,7 @@ center .login-header {
 	width: 60%;
 	margin-left: 20%;
 	margin-top: 20%;
-	border: 2px solid green;
+	border: 2px solid none;
 	border-radius: 20px;
 	padding: 10px;
 }
@@ -96,9 +113,13 @@ center .login-header {
 	width: 60%;
 	margin-left: 20%;
 	margin-top: 10%;
-	border: 2px solid blue;
+	border: 2px solid none;
 	border-radius: 20px;
 	padding: 10px;
+}
+
+.index-new-app  input{
+	padding: 5px;
 }
 
 .index-main .app_btn {
@@ -133,15 +154,19 @@ center .login-header {
 	margin-left: 20%;
 }
 
+.admin-table{
+	margin-left: 12%;
+}
+
 .table-main th {
 	width: 27%;
 }
 
 .table-main th {
-	color: rgb(129, 129, 249);
+	color: rgb(68, 122, 94);
 }
 
-.table-main table,
+.table-main table
 th,
 td {
 	border: 1px solid rgb(36, 28, 28);
@@ -181,7 +206,7 @@ td {
 }
 
 .index-my-apps th {
-	color: rgb(129, 129, 249);
+	color: rgb(46, 93, 89);
 	text-align: center;
 }
 

@@ -37,6 +37,7 @@ if ($_POST && isset($_POST["name"]) && isset($_POST["tc"]) && isset($_POST["pass
 			<input type="password" name="password" class="login-item login-passwd" placeholder='Şifre'>
 			<button class="login-btn register-btn" name="register">Kayit Ol</button>
 		</form>
+		<button onclick="window.location.href = 'login.php'" style='border:3px solid gray' class="login-btn register-btn" name="register">Giriş Yap</button>
 	</div>
 </body>
 
