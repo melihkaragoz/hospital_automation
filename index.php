@@ -88,8 +88,8 @@ if (isset($_GET)) {
 				$app_date = $app["date"];
 				$app_id = $app["id"];
 				echo ("<tr>");
-				echo ("<td>$app_branch</td>");
 				echo ("<td>$app_doctor</td>");
+				echo ("<td>$app_branch</td>");
 				echo ("<td>$app_date</td>");
 				echo ("<td onclick='del($app_id)' class='cancel_app'>iptal et<input type='hidden'> </td>");
 				echo ("</tr>");
